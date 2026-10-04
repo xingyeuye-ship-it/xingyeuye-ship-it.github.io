@@ -6,3 +6,23 @@ grid.addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(
 function switchAI(tab){document.querySelector('#ai-panel')?.setAttribute('aria-labelledby',tab+'-tab');document.querySelectorAll('[data-ai-tab]').forEach(b=>{const selected=b.dataset.aiTab===tab;b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1});document.querySelectorAll('[data-ai-group]').forEach(f=>f.hidden=f.dataset.aiGroup!==tab)}
 dialog.addEventListener('click',e=>{const b=e.target.closest('[data-ai-tab]');if(b)switchAI(b.dataset.aiTab)});
 dialog.addEventListener('keydown',e=>{if(e.target.matches('[data-ai-tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const tab=e.key==='Home'?'male':e.key==='End'?'female':e.target.dataset.aiTab==='male'?'female':'male';switchAI(tab);document.querySelector(`[data-ai-tab="${tab}"]`).focus()}});
+
+// Reveal complete works as they enter either the page or project gallery.
+const motionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}})},{threshold:0.08}):null;
+function revealWorks(){document.querySelectorAll('.project-card,.detail-images figure').forEach(el=>{if(el.classList.contains('motion-ready'))return;if(!motionQuery.matches&&revealObserver){el.classList.add('motion-ready');revealObserver.observe(el)}})}
+new MutationObserver(revealWorks).observe(grid,{childList:true});
+new MutationObserver(revealWorks).observe(document.querySelector('#detail-content'),{childList:true});
+revealWorks();
+const music=document.querySelector('#background-music'),musicButton=document.querySelector('#music-toggle');
+music.volume=0.35;
+let userPaused=false;
+function syncMusic(){const playing=!music.paused;musicButton.setAttribute('aria-pressed',String(playing));musicButton.setAttribute('aria-label',playing?'暂停背景音乐':'播放背景音乐');musicButton.querySelector('.music-text').textContent=playing?'暂停音乐 / Pause':'播放音乐 / Play';musicButton.classList.toggle('is-playing',playing)}
+function startMusic(){if(userPaused)return;music.play().catch(()=>syncMusic())}
+musicButton.addEventListener('click',()=>{if(music.paused){userPaused=false;startMusic()}else{userPaused=true;music.pause()}});
+music.addEventListener('play',syncMusic);music.addEventListener('pause',syncMusic);
+music.addEventListener('error',()=>{musicButton.querySelector('.music-text').textContent='音乐暂不可用';musicButton.disabled=true});
+// If autoplay is blocked, retry on the visitor's first interaction.
+function firstInteraction(event){if(event.target.closest('#music-toggle'))return;startMusic();document.removeEventListener('pointerdown',firstInteraction);document.removeEventListener('keydown',firstInteraction)}
+document.addEventListener('pointerdown',firstInteraction);document.addEventListener('keydown',firstInteraction);
+startMusic();
