@@ -57,3 +57,5 @@
 .music-toggle{position:fixed;right:22px;bottom:22px;z-index:20;display:flex;align-items:center;gap:10px;border:1px solid #dedee4;border-radius:30px;padding:12px 18px;background:#fffffff2;color:#202023;box-shadow:0 4px 24px #0000000b;font:12px/1.4 Arial,sans-serif;backdrop-filter:blur(8px)}.music-symbol{font-size:20px;color:var(--blue)}.music-toggle.is-playing .music-symbol{animation:music-pulse 2.4s ease-in-out infinite}@keyframes music-pulse{50%{opacity:.4;transform:translateY(-2px)}}
 @media(max-width:480px){.music-toggle{right:12px;bottom:12px;padding:10px 14px}}
 @media(prefers-reduced-motion:reduce){.motion-ready{opacity:1;transform:none}.project-open:hover img,.project-open:focus-visible img{transform:none}*{animation:none!important;transition:none!important}}
+
+.multi-entry .project-entries{display:grid;grid-template-columns:1fr 1fr;gap:16px}.multi-entry .image-wrap img{height:560px;object-fit:contain}.multi-entry .image-label{left:8px;bottom:10px;font-size:10px;padding:5px 7px}@media(max-width:800px){.multi-entry .image-wrap img{height:330px}}@media(max-width:480px){.multi-entry .project-entries{gap:10px}.multi-entry .image-wrap img{height:auto}}
