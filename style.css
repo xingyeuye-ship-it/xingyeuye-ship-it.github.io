@@ -59,3 +59,18 @@
 @media(prefers-reduced-motion:reduce){.motion-ready{opacity:1;transform:none}.project-open:hover img,.project-open:focus-visible img{transform:none}*{animation:none!important;transition:none!important}}
 
 .multi-entry .project-entries{display:grid;grid-template-columns:1fr 1fr;gap:16px}.multi-entry .image-wrap img{height:560px;object-fit:contain}.multi-entry .image-label{left:8px;bottom:10px;font-size:10px;padding:5px 7px}@media(max-width:800px){.multi-entry .image-wrap img{height:330px}}@media(max-width:480px){.multi-entry .project-entries{gap:10px}.multi-entry .image-wrap img{height:auto}}
+
+/* Equal AI model entries, with full portraits and a shared layout. */
+.ai-project-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;align-items:start}
+.ai-project-grid .project-card:nth-child(even){padding-top:0}
+.ai-entry-card .project-open{border:1px solid #e5e5ea;background:#f7f7f9;transition:border-color .25s,box-shadow .25s}
+.ai-entry-card .project-open:hover,.ai-entry-card .project-open:focus-visible{border-color:var(--blue);box-shadow:0 8px 24px #0034f50b}
+.ai-entry-card .image-wrap{aspect-ratio:4/5;overflow:hidden;background:#f7f7f9}
+.ai-entry-card .image-wrap img{width:100%;height:100%;object-fit:contain;object-position:center;background:transparent;padding:16px 16px 58px}
+.ai-entry-card .image-label{bottom:14px;left:14px;right:14px;width:max-content;max-width:calc(100% - 28px);font:14px/1.4 Arial,sans-serif;padding:8px 12px;border:1px solid #e5e5ea;background:#fff}
+.ai-entry-card .card-meta{margin-top:20px;font-size:12px;letter-spacing:.06em}
+.ai-entry-card h3{font-size:26px;line-height:1.35}
+.ai-entry-card h3 i{font-size:18px;line-height:1.5;margin-top:6px}
+.ai-entry-card .card-tags{font-size:14px;line-height:1.6;margin-top:12px}
+@media(max-width:800px){.ai-project-grid{gap:16px}.ai-entry-card .image-wrap img{padding:10px 10px 52px}.ai-entry-card .image-label{font-size:12px;left:8px;right:8px;bottom:10px;padding:7px 8px;max-width:calc(100% - 16px)}.ai-entry-card h3{font-size:22px}.ai-entry-card h3 i{font-size:16px}}
+@media(max-width:600px){.ai-project-grid{grid-template-columns:1fr;gap:34px}.ai-entry-card .image-wrap{aspect-ratio:4/5}.ai-entry-card .image-wrap img{height:100%;max-height:none;padding:16px 16px 58px}.ai-entry-card .image-label{font-size:14px;left:14px;bottom:14px;padding:8px 12px}}
