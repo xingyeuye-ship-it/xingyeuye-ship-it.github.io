@@ -82,3 +82,7 @@
 
 /* Equal complete-image frames for the first four Zhihai looks. */
 .detail-images figure[data-aligned="true"] img,.project-review .detail-images figure[data-aligned="true"] img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;object-position:center;background:#fff}
+
+/* Brand showcase starts on a new gallery row with a clear section heading. */
+.gallery-divider{grid-column:1/-1;margin:22px 0 2px;padding:28px 0 12px;border-top:1px solid #cfcfd6}.gallery-divider h3{margin:0;font-weight:400;font-size:28px;line-height:1.5}.gallery-divider h3 i{display:block;color:var(--blue);font:italic 21px/1.5 Georgia,serif;margin-top:5px}
+@media(max-width:600px){.gallery-divider{padding-top:22px;margin-top:14px}.gallery-divider h3{font-size:24px}.gallery-divider h3 i{font-size:19px}}
