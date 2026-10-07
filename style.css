@@ -74,3 +74,11 @@
 .ai-entry-card .card-tags{font-size:14px;line-height:1.6;margin-top:12px}
 @media(max-width:800px){.ai-project-grid{gap:16px}.ai-entry-card .image-wrap img{padding:10px 10px 52px}.ai-entry-card .image-label{font-size:12px;left:8px;right:8px;bottom:10px;padding:7px 8px;max-width:calc(100% - 16px)}.ai-entry-card h3{font-size:22px}.ai-entry-card h3 i{font-size:16px}}
 @media(max-width:600px){.ai-project-grid{grid-template-columns:1fr;gap:34px}.ai-entry-card .image-wrap{aspect-ratio:4/5}.ai-entry-card .image-wrap img{height:100%;max-height:none;padding:16px 16px 58px}.ai-entry-card .image-label{font-size:14px;left:14px;bottom:14px;padding:8px 12px}}
+
+
+/* Zhihai 21 degree project: craft narrative follows the process photographs. */
+.craft-story{margin:48px 0 12px;padding:34px 0 0;border-top:1px solid #d8d8de;max-width:860px}.craft-story h3{font-size:28px;line-height:1.45;font-weight:400;margin:14px 0 24px}.craft-story h3 i{display:block;font:italic 23px/1.5 Georgia,serif;color:var(--blue);margin-top:8px}.craft-story>p:not(.small){font-size:17px;line-height:1.95;margin:18px 0}.craft-story .english{color:var(--muted);font-size:16px!important;line-height:1.8!important}.detail-images figcaption{color:#55555d;letter-spacing:.04em;padding-bottom:6px}
+@media(max-width:600px){.craft-story{margin-top:30px;padding-top:24px}.craft-story h3{font-size:24px}.craft-story h3 i{font-size:20px}.craft-story>p:not(.small){font-size:16px}}
+
+/* Equal complete-image frames for the first four Zhihai looks. */
+.detail-images figure[data-aligned="true"] img,.project-review .detail-images figure[data-aligned="true"] img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;object-position:center;background:#fff}
