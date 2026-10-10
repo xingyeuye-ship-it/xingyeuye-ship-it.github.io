@@ -31,8 +31,18 @@ function startMusic(){if(userPaused)return;music.play().catch(()=>syncMusic())}
 musicButton.addEventListener('click',()=>{if(music.paused){userPaused=false;startMusic()}else{userPaused=true;music.pause()}});
 music.addEventListener('play',syncMusic);music.addEventListener('pause',syncMusic);
 music.addEventListener('error',()=>{musicButton.querySelector('.music-text').textContent='音乐暂不可用';musicButton.disabled=true});
-// If autoplay is blocked, retry on the visitor's first interaction.
-function firstInteraction(event){if(event.target.closest('#music-toggle'))return;startMusic();document.removeEventListener('pointerdown',firstInteraction);document.removeEventListener('keydown',firstInteraction)}
-document.addEventListener('pointerdown',firstInteraction);document.addEventListener('keydown',firstInteraction);
-startMusic();
+// Background music starts only when the visitor presses Play.
+syncMusic();
 
+const coverFilm=document.querySelector('#cover-film');
+const filmButton=document.querySelector('.film-playback');
+function syncFilm(){const playing=!coverFilm.paused;filmButton.setAttribute('aria-pressed',String(playing));filmButton.setAttribute('aria-label',playing?'暂停封面视频':'播放封面视频');filmButton.querySelector('.film-control-symbol').textContent=playing?'Ⅱ':'▷';filmButton.querySelector('.film-control-text').textContent=playing?'暂停 / Pause':'播放 / Play'}
+function startFilm(){coverFilm.muted=true;coverFilm.defaultMuted=true;coverFilm.volume=0;coverFilm.play().catch(syncFilm)}
+coverFilm.muted=true;coverFilm.defaultMuted=true;coverFilm.volume=0;
+coverFilm.addEventListener('play',syncFilm);coverFilm.addEventListener('pause',syncFilm);
+coverFilm.addEventListener('loadedmetadata',()=>{syncFilm();if(!document.hidden)startFilm()},{once:true});
+filmButton.addEventListener('click',()=>{if(coverFilm.paused)startFilm();else coverFilm.pause()});
+let filmResume=false;
+document.addEventListener('visibilitychange',()=>{if(document.hidden){filmResume=!coverFilm.paused;coverFilm.pause()}else if(filmResume){filmResume=false;startFilm()}});
+coverFilm.addEventListener('error',()=>{filmButton.querySelector('.film-control-text').textContent='视频暂不可用';filmButton.disabled=true});
+startFilm();

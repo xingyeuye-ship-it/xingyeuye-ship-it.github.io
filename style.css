@@ -86,3 +86,17 @@
 /* Brand showcase starts on a new gallery row with a clear section heading. */
 .gallery-divider{grid-column:1/-1;margin:22px 0 2px;padding:28px 0 12px;border-top:1px solid #cfcfd6}.gallery-divider h3{margin:0;font-weight:400;font-size:28px;line-height:1.5}.gallery-divider h3 i{display:block;color:var(--blue);font:italic 21px/1.5 Georgia,serif;margin-top:5px}
 @media(max-width:600px){.gallery-divider{padding-top:22px;margin-top:14px}.gallery-divider h3{font-size:24px}.gallery-divider h3 i{font-size:19px}}
+
+/* Draft: white introduction with a quiet moving background. */
+.about{background:#fff;isolation:isolate;min-height:1000px}
+.intro-video{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#fff}
+.intro-video .cover-film{display:block;width:100%;height:100%;object-fit:contain;object-position:right center;opacity:.9;filter:none;mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.25) 30%,#000 62%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.25) 30%,#000 62%)}
+.intro-video:after{content:"";position:absolute;inset:0;background:linear-gradient(to right,#fff 0%,rgba(255,255,255,.84) 35%,rgba(255,255,255,.08) 68%,rgba(255,255,255,.08) 100%)}
+.about-left{position:relative;z-index:2}
+.film-playback{position:absolute;right:24px;bottom:22px;z-index:3;display:flex;align-items:center;gap:8px;border:1px solid #ddd;padding:8px 12px;color:#606066;background:rgba(255,255,255,.88);font:11px/1.4 Arial,sans-serif}
+.film-control-symbol{font-size:14px}.film-playback:hover{border-color:var(--blue);color:var(--blue)}.film-playback:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(max-width:700px){.intro-video .cover-film{object-position:center bottom;opacity:.62;mask-image:none;-webkit-mask-image:none}.intro-video:after{background:rgba(255,255,255,.45)}.film-playback{right:14px;bottom:16px;font-size:10px}}
+
+/* Slight rightward adjustment requested for the film composition. */
+.intro-video .cover-film{transform:translateX(4%)}
+@media(max-width:700px){.intro-video .cover-film{transform:translateX(2%)}}
