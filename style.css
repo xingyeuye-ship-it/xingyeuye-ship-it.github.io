@@ -100,3 +100,7 @@
 /* Slight rightward adjustment requested for the film composition. */
 .intro-video .cover-film{transform:translateX(4%)}
 @media(max-width:700px){.intro-video .cover-film{transform:translateX(2%)}}
+
+/* AI fashion films: full-width uncropped players in the project gallery. */
+.film-gallery{display:grid;gap:52px}.film-item{border-top:1px solid #ddd;padding-top:26px}.film-heading h3{font-weight:400;font-size:30px;line-height:1.4;margin:12px 0 24px}.film-heading h3 i{display:block;font:italic 22px/1.5 Georgia,serif;color:var(--blue);margin-top:6px}.film-item video{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:contain;background:#111}.project-card[data-category="AI视频"]{grid-column:1/-1;max-width:100%;padding-top:0}.project-card[data-category="AI视频"] .image-wrap img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}.project-card[data-category="AI视频"] .image-label{background:#fff;color:var(--blue)}
+@media(max-width:600px){.film-gallery{gap:32px}.film-heading h3{font-size:25px}.film-heading h3 i{font-size:19px}}
